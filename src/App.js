@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import './App.css';
-
+import NewForm from './components/NewForm'
 
 function App() {
 
@@ -23,6 +23,7 @@ function App() {
   return (
     <>
         <h1>PARTIES! YAY!</h1>
+          <NewForm />
               <table>
                 <thead>
                   <tr>
