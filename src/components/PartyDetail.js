@@ -82,7 +82,8 @@ useEffect(() => getParty(), []);
         </tr>
       </tbody>
     </table>
-    <Link to={`/parties/${party._id}/edit`}>Edit Party</Link>
+    <br/><Link to={`/parties/${party._id}/edit`}>Edit Party</Link>
+    <br/><Link to="/parties">Back to Parties</Link>
 
 
     </>
