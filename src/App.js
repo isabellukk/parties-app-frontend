@@ -43,15 +43,13 @@ function App() {
 
   return (
     <>
-
-    <Router>
-      <Switch>
-      <h1>PARTIES! YAY!</h1>
-        <Route exact path="/parties" component={NewForm} />
-        <Route exact path="/parties" render={() => <PartyList parties={parties} /> }/>
-        <Route exact path="/parties/:id" render={(routerProps) => <PartyDetail {...routerProps} />} />
-      </Switch>
-
+    <h1>PARTIES! YAY!</h1>
+      <Router>
+        <Switch>
+          <Route path="/parties/new" render={(routerProps)=> <NewForm {...routerProps }/> } />
+          <Route path="/parties" render={() => <PartyList parties={parties} /> }/>
+          <Route path="/parties/:id" render={(routerProps) => <PartyDetail {...routerProps} />} />
+        </Switch>
     </Router>
     </>
   );

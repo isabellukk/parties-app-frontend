@@ -25,7 +25,8 @@ function PartyList(props) {
           <td>{party.source}</td>
           <td>{party.cost}</td>
           <td>{party.date}</td>
-        </tr>)}
+        </tr>
+      )}
       </tbody>
     </table>
   )
