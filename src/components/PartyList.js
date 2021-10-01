@@ -1,9 +1,12 @@
 import React from "react";
+import { BrowserRouter as Router, Link } from 'react-router-dom'
+
 
 function PartyList(props) {
   const { parties } = props;
 
-  console.log(parties);
+  // console.log("props from partylist", props.match.params.id)
+  console.log("from parties", parties);
 
   return (
     <table>
@@ -25,6 +28,9 @@ function PartyList(props) {
           <td>{party.source}</td>
           <td>{party.cost}</td>
           <td>{party.date}</td>
+          <td>
+            <Link to={"/parties/" + party._id}>View Party</Link>
+          </td>
         </tr>
       )}
       </tbody>

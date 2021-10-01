@@ -10,7 +10,6 @@ function App() {
   const [parties, setParties] = useState([])
 
 
-
   const getParties = async () => {
     try {
       const parties = await fetch("http://localhost:9000/parties")
@@ -41,16 +40,18 @@ function App() {
     getParties()
   }, [])
 
+  // console.log("props from app", props.match.params.id)
+
   return (
     <>
     <h1>PARTIES! YAY!</h1>
       <Router>
         <Switch>
-          <Route path="/parties/new" render={(routerProps)=> <NewForm {...routerProps }/> } />
-          <Route path="/parties" render={() => <PartyList parties={parties} /> }/>
-          <Route path="/parties/:id" render={(routerProps) => <PartyDetail {...routerProps} />} />
+          <Route exact path="/parties/new" render={(routerProps)=> <NewForm {...routerProps }/> } />
+          <Route exact path="/parties" render={() => <PartyList parties={parties} /> }/>
+          <Route exact path="/parties/:id" render={(routerProps) => <PartyDetail {...routerProps} />} />
         </Switch>
-    </Router>
+      </Router>
     </>
   );
 }
