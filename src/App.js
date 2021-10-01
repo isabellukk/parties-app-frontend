@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css';
 import NewForm from './components/NewForm'
 import PartyList from './components/PartyList'
+import PartyDetail from './components/PartyDetail'
 
 function App() {
 
@@ -42,12 +43,15 @@ function App() {
 
   return (
     <>
+
     <Router>
       <Switch>
       <h1>PARTIES! YAY!</h1>
         <Route exact path="/parties" component={NewForm} />
         <Route exact path="/parties" render={() => <PartyList parties={parties} /> }/>
+        <Route exact path="/parties/:id" render={(routerProps) => <PartyDetail {...routerProps} />}
       </Switch>
+
     </Router>
     </>
   );
