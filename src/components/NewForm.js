@@ -11,12 +11,35 @@ const NewForm = (props) => {
     setInput({ ...input, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    props.addParty(input);
-    setInput(initialState);
-  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   props.addParty(input);
+  //   setInput(initialState);
+  // };
+  const handleSubmit = async (newParty) => {
+  try {
+    const config = {
+      method: "POST",
+      body: JSON.stringify(newParty),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
+    const createdParty = await fetch(
+      "http://localhost:9000/parties/",
+      config
+    );
+    const parsedParty = await createdParty.json();
+    console.log(parsedParty)
+    if (parsedParty) {
+      props.history.push('/parties')
+    }
+  } catch (err) {
+    console.log(err);
+    props.history.push('/parties')
+  }
+};
   return (
     <div className="form-section">
       <form onSubmit={handleSubmit}>

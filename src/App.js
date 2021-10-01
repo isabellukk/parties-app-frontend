@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css';
 import NewForm from './components/NewForm'
 import PartyList from './components/PartyList'
@@ -7,27 +8,7 @@ function App() {
 
   const [parties, setParties] = useState([])
 
-  const newParty = async (data) => {
-  try {
-    const config = {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
 
-    const createdParty = await fetch(
-      "http://localhost:9000/parties/",
-      config
-    );
-    const parsedParty = await createdParty.json();
-    console.log(parsedParty)
-    setParties([...parties, parsedParty])
-  } catch (err) {
-    console.log(err);
-  }
-};
 
   const getParties = async () => {
     try {
@@ -61,9 +42,13 @@ function App() {
 
   return (
     <>
+    <Router>
+      <Switch>
       <h1>PARTIES! YAY!</h1>
-        <NewForm addParty={newParty}/>
-        <PartyList parties={parties}/>
+        <Route exact path="/parties" component={NewForm} />
+        <Route exact path="/parties" render={() => <PartyList parties={parties} /> }/>
+      </Switch>
+    </Router>
     </>
   );
 }
