@@ -7,48 +7,13 @@ import PartyDetail from './components/PartyDetail'
 
 function App() {
 
-  const [parties, setParties] = useState([])
-
-
-  const getParties = async () => {
-    try {
-      const parties = await fetch("http://localhost:9000/parties")
-      const parsedParties = await parties.json()
-      setParties(parsedParties)
-    } catch(err) {
-      console.log(err)
-    }
-  }
-
-  // const deleteParty = async (id) =>{
-  //    try{
-  //     const deletedParty = await fetch("http://localhost:9000/parties/"+id, {
-  //       method: 'DELETE'
-  //     })
-  //     const parsedParty = await deletedParty.json()
-  //     console.log(parsedParty)
-  //     const updatedParties = parties.filter(party=>party._id !== parsedParty._id)
-  //     // return a new array where all of the holiday ids do not match the recently deleted holiday id.
-  //     // [ .... ]
-  //     setParties(updatedParties)
-  //    }catch(err){
-  //      console.log(err)
-  //    }
-  // }
-
-  useEffect(()=>{
-    getParties()
-  }, [])
-
-  // console.log("props from app", props.match.params.id)
-
   return (
     <>
     <h1>PARTIES! YAY!</h1>
       <Router>
         <Switch>
           <Route exact path="/parties/new" render={(routerProps)=> <NewForm {...routerProps }/> } />
-          <Route exact path="/parties" render={() => <PartyList parties={parties} /> }/>
+          <Route exact path="/parties" component={PartyList} />
           <Route exact path="/parties/:id" render={(routerProps) => <PartyDetail {...routerProps} />} />
         </Switch>
       </Router>
