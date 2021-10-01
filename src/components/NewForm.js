@@ -11,35 +11,56 @@ const NewForm = (props) => {
     setInput({ ...input, [e.target.name]: e.target.value })
   }
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   props.addParty(input);
-  //   setInput(initialState);
-  // };
-  const handleSubmit = async (newParty) => {
-  try {
-    const config = {
-      method: "POST",
-      body: JSON.stringify(newParty),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    const createdParty = await fetch(
-      "http://localhost:9000/parties/",
-      config
-    );
-    const parsedParty = await createdParty.json();
-    console.log(parsedParty)
-    if (parsedParty) {
+  const newParty = async (data) => {
+    try {
+      const configs = {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+      const createdParty = await fetch("http://localhost:9000/parties", configs)
+      const parsedParty = await createdParty.json()
+      console.log(parsedParty)
       props.history.push('/parties')
+      // props.setBooks([...props.books, parsedBook])
+      } catch(err) {
+        console.log(err)
+      }
     }
-  } catch (err) {
-    console.log(err);
-    props.history.push('/parties')
-  }
-};
+
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    newParty(input)
+  };
+//   const handleSubmit = async (newParty) => {
+//   try {
+//     const config = {
+//       method: "POST",
+//       body: JSON.stringify(newParty),
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     };
+//
+//     const createdParty = await fetch(
+//       "http://localhost:9000/parties/",
+//       config
+//     );
+//     const parsedParty = await createdParty.json();
+//     console.log(parsedParty)
+//     if (parsedParty) {
+//       props.history.push('/parties')
+//     }
+//   } catch (err) {
+//     console.log(err);
+//     props.history.push('/parties')
+//   }
+// };
+
   return (
     <div className="form-section">
       <form onSubmit={handleSubmit}>
