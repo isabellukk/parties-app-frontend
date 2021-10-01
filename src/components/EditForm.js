@@ -55,7 +55,7 @@ const EditForm = (props) => {
   const deleteParty = async (id) => {
     try {
       const deletedParty = await fetch(
-        `http://localhost:9000/books/${id}`,
+        `http://localhost:9000/parties/${id}`,
         {
           method: "DELETE",
         }
