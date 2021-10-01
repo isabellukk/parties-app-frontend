@@ -14,10 +14,11 @@ const EditForm = (props) => {
 
   const getPartyToEdit = async () => {
     try {
-      const id = props.match.id;
-      const foundParty = await fetch("http://localhost:9000/parties" + id);
+      const id = props.match.params.id;
+      const foundParty = await fetch("http://localhost:9000/parties/" + id);
       if (foundParty.status === 200) {
         const parsedParty = await foundParty.json();
+        setInput(parsedParty)
       }
     } catch (err) {
       console.log(err);
