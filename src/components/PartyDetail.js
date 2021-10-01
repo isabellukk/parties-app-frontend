@@ -59,6 +59,7 @@ useEffect(() => getParty(), []);
 
   console.log(target)
   return (
+    <>
     <table>
       <thead>
         <tr>
@@ -81,6 +82,8 @@ useEffect(() => getParty(), []);
       </tbody>
     </table>
 
+
+    </>
   )
 }
 export default PartyDetail;
