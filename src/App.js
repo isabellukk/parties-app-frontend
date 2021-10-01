@@ -6,6 +6,28 @@ function App() {
 
   const [parties, setParties] = useState([])
 
+  const newParty = async (data) => {
+  try {
+    const config = {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const createdParty = await fetch(
+      "http://localhost:9000/parties/",
+      config
+    );
+    const parsedParty = await createdParty.json();
+    console.log(parsedParty)
+    setParties([...parties, parsedParty])
+  } catch (err) {
+    console.log(err);
+  }
+};
+
   const getParties = async () => {
     try {
       const parties = await fetch("http://localhost:9000/parties")
@@ -23,7 +45,7 @@ function App() {
   return (
     <>
         <h1>PARTIES! YAY!</h1>
-          <NewForm />
+          <NewForm addParty={newParty}/>
               <table>
                 <thead>
                   <tr>

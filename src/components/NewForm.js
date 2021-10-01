@@ -13,7 +13,7 @@ const NewForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.addHoliday(input);
+    props.addParty(input);
     setInput(initialState);
   };
 
