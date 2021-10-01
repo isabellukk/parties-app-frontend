@@ -82,13 +82,13 @@ useEffect(() => getPartyToEdit(), [])
         </legend>
         <legend>
             <label htmlFor="description">Description</label>
-            <textarea
-            id="description"
-            name="description"
-            onChange={handleChange}
+            <input
+              id="description"
+              name="description"
+              onChange={handleChange}
+              value={input.description}
             >
-            {input.description}
-            </textarea>
+            </input>
         </legend>
         <legend>
             <label htmlFor="source">Source</label>
@@ -103,21 +103,21 @@ useEffect(() => getPartyToEdit(), [])
         <legend>
             <label htmlFor="cost">Cost</label>
             <input
-            type= "number"
-            id="cost"
-            name="cost"
-            value={input.cost}
-            onChange={handleChange}
+              id="cost"
+              name="cost"
+              type="number"
+              value={input.cost}
+              onChange={handleChange}
             />
         </legend>
         <legend>
             <label htmlFor="date">Date</label>
             <input
-            type= "date"
-            id="date"
-            name="date"
-            value={input.date}
-            onChange={handleChange}
+
+              id="date"
+              name="date"
+              value={input.date}
+              onChange={handleChange}
             />
         </legend>
         <button onClick={() => props.history.goBack()}>Go Back</button>
