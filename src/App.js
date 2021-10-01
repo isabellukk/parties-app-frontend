@@ -49,7 +49,7 @@ function App() {
       <h1>PARTIES! YAY!</h1>
         <Route exact path="/parties" component={NewForm} />
         <Route exact path="/parties" render={() => <PartyList parties={parties} /> }/>
-        <Route exact path="/parties/:id" render={(routerProps) => <PartyDetail {...routerProps} />}
+        <Route exact path="/parties/:id" render={(routerProps) => <PartyDetail {...routerProps} />} />
       </Switch>
 
     </Router>
