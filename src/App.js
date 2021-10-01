@@ -4,6 +4,7 @@ import './App.css';
 import NewForm from './components/NewForm'
 import PartyList from './components/PartyList'
 import PartyDetail from './components/PartyDetail'
+import EditForm from './components/EditForm'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/parties/new" render={(routerProps)=> <NewForm {...routerProps }/> } />
           <Route exact path="/parties" component={PartyList} />
           <Route exact path="/parties/:id" render={(routerProps) => <PartyDetail {...routerProps} />} />
+          <Route exact path="/parties/:id/edit" render={(routerProps) => <EditForm {...routerProps} />}/>
         </Switch>
       </Router>
     </>

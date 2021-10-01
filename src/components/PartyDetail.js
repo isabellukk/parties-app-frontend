@@ -20,7 +20,7 @@ function PartyDetail(props) {
 const [parties, setParties] = useState([])
 
 
-const getParties = async () => {
+const getPartiesToEdit = async () => {
   try {
     const parties = await fetch("http://localhost:9000/parties")
     if (parties.status === 200) {
@@ -34,7 +34,7 @@ const getParties = async () => {
   }
 }
 
-  useEffect(() => getParties(), [parties.length]);
+  // useEffect(() => getParties(), [parties.length]);
 
 // useEffect(()=>{
 //   getParties()
@@ -80,6 +80,7 @@ useEffect(() => getParty(), []);
         </tr>
       </tbody>
     </table>
+
   )
 }
 export default PartyDetail;
