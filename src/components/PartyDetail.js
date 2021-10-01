@@ -1,5 +1,6 @@
 import React from "react";
 import {useState, useEffect} from 'react'
+import { Link } from "react-router-dom";
 
 function PartyDetail(props) {
 
@@ -81,6 +82,7 @@ useEffect(() => getParty(), []);
         </tr>
       </tbody>
     </table>
+    <Link to={`/parties/${party._id}/edit`}>Edit Party</Link>
 
 
     </>
